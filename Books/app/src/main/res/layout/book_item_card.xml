@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="book"
+            type="com.eselman.android.books.model.Book" />
+
+        <variable
+            name="bookClick"
+            type="com.eselman.android.books.list.BooksListAdapter.BookClick" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:id="@+id/bookCardView"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"
+        app:cardCornerRadius="8dp"
+        app:cardBackgroundColor="@color/teal_200">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/bookSmallThumbnail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:bookSmallThumbnailImage="@{book.volumeInfo.imageLinks.smallThumbnail}"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                tools:src="@mipmap/ic_launcher"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/bookTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{book.volumeInfo.title}"
+                android:textAppearance="@style/Theme.Books.Title"
+                android:ellipsize="end"
+                android:maxLines="3"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/bookSmallThumbnail"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Caballo de Fuego" />
+
+            <TextView
+                android:id="@+id/bookSubTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:text="@{book.volumeInfo.subtitle}"
+                android:textAppearance="@style/Theme.Books.SubTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bookSmallThumbnail"
+                app:layout_constraintTop_toBottomOf="@id/bookTitle"
+                tools:text="Paris" />
+            <TextView
+                android:id="@+id/bookAuthors"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                app:authors="@{book.volumeInfo.authors}"
+                android:textAppearance="@style/Theme.Books.Authors"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bookSmallThumbnail"
+                app:layout_constraintTop_toBottomOf="@id/bookSubTitle"
+                tools:text="Florencia Bonelli" />
+
+            <View
+                android:id="@+id/clickableOverlay"
+                android:layout_width="411dp"
+                android:layout_height="0dp"
+                android:background="?attr/selectableItemBackground"
+                android:onClick="@{() -> bookClick.onClick(book)}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="book"
+            type="com.eselman.android.books.model.Book" />
+    </data>
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/motion_scene_book_details">
+        <ScrollView
+            android:id="@+id/bookDetailsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/teal_200">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:context=".detail.BookDetailsFragment">
+
+                <ImageView
+                    android:id="@+id/bookThumbnail"
+                    android:layout_width="150dp"
+                    android:layout_height="250dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    app:bookSmallThumbnailImage="@{book.volumeInfo.imageLinks.thumbnail}"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/bookTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{book.volumeInfo.title}"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:textAppearance="@style/Theme.Books.Title"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bookThumbnail"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Aquí Hay Dragones" />
+
+                <TextView
+                    android:id="@+id/bookSubtitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:ellipsize="end"
+                    android:maxLines="3"
+                    android:text="@{book.volumeInfo.subtitle}"
+                    android:textAppearance="@style/Theme.Books.SubTitle"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bookThumbnail"
+                    app:layout_constraintTop_toBottomOf="@+id/bookTitle"
+                    tools:text="La Historia de la Diana" />
+
+                <TextView
+                    android:id="@+id/bookPublisher"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@{book.volumeInfo.publisher}"
+                    android:textAppearance="@style/Theme.Books.Authors"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bookThumbnail"
+                    app:layout_constraintTop_toBottomOf="@+id/bookSubtitle"
+                    tools:text="SUMA DE LETRAS" />
+
+                <TextView
+                    android:id="@+id/bookPublishedDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:textAppearance="@style/Theme.Books.Authors"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bookThumbnail"
+                    app:layout_constraintTop_toBottomOf="@+id/bookPublisher"
+                    app:publishedDate="@{book.volumeInfo.publishedDate}"
+                    tools:text="Abril 2019" />
+
+                <TextView
+                    android:id="@+id/bookDescription"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:text="@{book.volumeInfo.description}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/bookThumbnail"
+                    tools:text="Una mujer extraordinaria, que atraviesa la siniestra Guerra de los Balcanes en los años 90 del siglo XX,......" />
+
+                <Button
+                    android:id="@+id/buyBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="@string/buy_btn"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/bookThumbnail"
+                    app:layout_constraintTop_toBottomOf="@+id/bookPublishedDate" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>

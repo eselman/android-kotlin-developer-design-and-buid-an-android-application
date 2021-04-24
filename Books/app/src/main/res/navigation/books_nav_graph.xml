@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/books_nav_graph"
+    app:startDestination="@id/searchFragment">
+
+    <fragment
+        android:id="@+id/booksListFragment"
+        android:name="com.eselman.android.books.list.BooksListFragment"
+        android:label="@string/list_fragment_label" >
+        <argument
+            android:name="query"
+            app:argType="string" />
+        <argument
+            android:name="searchBy"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_booksListFragment_to_bookDetailsFragment"
+            app:destination="@id/bookDetailsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.eselman.android.books.search.SearchFragment"
+        android:label="@string/search_fragment_label"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_booksListFragment"
+            app:destination="@id/booksListFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_booksLocationFragment"
+            app:destination="@id/booksLocationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/bookDetailsFragment"
+        android:name="com.eselman.android.books.detail.BookDetailsFragment"
+        android:label="@string/details_fragment_label">
+        <argument
+            android:name="selectedBook"
+            app:argType="com.eselman.android.books.model.Book"/>
+    </fragment>
+    <fragment
+        android:id="@+id/booksLocationFragment"
+        android:name="com.eselman.android.books.maps.BooksLocationFragment"
+        android:label="@string/location_fragment_label"
+        tools:layout="@layout/fragment_books_location" />
+</navigation>

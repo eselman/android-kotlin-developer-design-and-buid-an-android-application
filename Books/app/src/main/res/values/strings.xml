@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Books</string>
+
+    <string name="search_fragment_label">Search Books</string>
+    <string name="list_fragment_label">Books</string>
+    <string name="details_fragment_label">Book Details</string>
+    <string name="location_fragment_label">Search Bookstores</string>
+
+    <string name="search_by_label">Search By: </string>
+    <string name="search_by_title">Title</string>
+    <string name="search_by_author">Author</string>
+    <string name="search_btn">Search</string>
+    <string name="search_hint">Enter Query</string>
+    <string name="no_data">No Books Available</string>
+    <string name="please_enter_query">Please Enter Query</string>
+    <string name="buy_btn">BUY</string>
+    <string name="refresh_text">* Pull to get more results</string>
+    <string name="normal_map">Normal Map</string>
+    <string name="hybrid_map">Hybrid Map</string>
+    <string name="satellite_map">Satellite Map</string>
+    <string name="terrain_map">Terrain Map</string>
+    <string name="searchBooksStores">Search Bookstores</string>
+
+    <string name="google_maps_key" templateMergeStrategy="preserve" translatable="false">your API Key here</string>
+    <string name="search_bookstores_btn">Search</string>
+    <string name="search_location_hint">Search Location</string>
+</resources>
